@@ -432,6 +432,7 @@
         linkDiv.className = 'link';
         const link = document.createElement('a');
         link.href = item.url;
+        link.setAttribute('download', '');
         link.textContent = `${item.label}`;
         linkDiv.appendChild(link);
 
