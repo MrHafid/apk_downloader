@@ -228,6 +228,7 @@ button {
 .icon {
   width: 100%;
   line-height: 40px;
+  z-index: 1;
 }
 .icon svg {
   width: 30px;
