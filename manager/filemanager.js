@@ -263,9 +263,9 @@ function resetHistoryBtn() {
 function openModel(modelFor) { //'newFile' 
     if (modelFor == 'download') {
         if (selected_item.item?.name && !selected_item.item['isDirectory']) {
-            let url = selected_item.item['url'];
-            window.open(url);
-            console.log(selected_item);
+            let url = selected_item.item['name'];
+            window.open("../build/" + url);
+            // console.log(selected_item);
         } else {
             document.querySelector('.popup').style.display = 'none'
             newToast('error', 'Please select a File!', (remove) => {
