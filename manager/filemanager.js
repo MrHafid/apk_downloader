@@ -267,6 +267,8 @@ function openModel(modelFor) { //'newFile'
             window.open("../build/" + url);
             // console.log(selected_item);
         } else {
+            document.querySelector('.popup').style.display = 'flex'
+            document.querySelector('.popup >.popup-bg').addEventListener('click', () => document.querySelector('.popup').style.display = 'none')
             document.querySelector('.popup').style.display = 'none'
             newToast('error', 'Please select a File!', (remove) => {
                 setTimeout(() => {
