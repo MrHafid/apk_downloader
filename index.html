@@ -1,248 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mobile Demo | Mr Hafid</title>
 
-    <!-- ==== STYLE.CSS ==== -->
-    <link rel="stylesheet" href="./css/style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/MrHafid/mrhafid.github.io/refs/heads/master/ic_ah.png">
+  <meta property="og:image:alt" content="App for development sharing from Achmad Hafid Supriyadi">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="600">
+  <meta property="og:site_name" content="mrhafid">
+  <meta property="og:type" content="object">
+  <meta property="og:url" content="https://mrhafid.my.id/">
+  <meta property="og:description" content="App for development sharing from Achmad Hafid Supriyadi">
+  <meta name="theme-color" content="#1167ab">
 
-    <!-- ====  REMIXICON CDN ==== -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
+  <title>Mobile Demo | Mr Hafid</title>
 
-    <!-- ==== ANIMATE ON SCROLL CSS CDN  ==== -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <style>
-      .email {
-        background: #dedbdf;
-        border-radius: 7px;
-        height: 50px;
-        overflow: hidden;
-        position: absolute;
-        background-color: var(--primary-color);
-        width: 165px;
-        z-index: 9999;
-        transition: 0.4s;
-        text-transform: capitalize;
-        -webkit-tap-highlight-color: transparent;
-        transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1),
-          height 300ms cubic-bezier(0.4, 0, 0.2, 1),
-          box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1),
-          border-radius 300ms cubic-bezier(0.4, 0, 0.2, 1);
-      }
+  <!-- ==== STYLE.CSS ==== -->
+  <link rel="stylesheet" href="./css/style.css" />
 
-      .email:not(.expand) {
-        cursor: pointer;
-      }
+  <!-- ====  REMIXICON CDN ==== -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
 
-      .email:not(.expand):hover {
-        background: #c2c0c2;
-        transform: translateY(-3px);
-        background-color: var(--btn-hover-color);
-      }
+  <!-- ==== ANIMATE ON SCROLL CSS CDN  ==== -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    .email {
+      background: #dedbdf;
+      border-radius: 7px;
+      height: 50px;
+      overflow: hidden;
+      position: absolute;
+      background-color: var(--primary-color);
+      width: 165px;
+      z-index: 9999;
+      transition: 0.4s;
+      text-transform: capitalize;
+      -webkit-tap-highlight-color: transparent;
+      transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1),
+        height 300ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1),
+        border-radius 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      .from {
-        position: absolute;
-        transition: opacity 200ms 100ms cubic-bezier(0, 0, 0.2, 1);
-      }
+    .email:not(.expand) {
+      cursor: pointer;
+    }
 
-      .from-contents {
-        display: flex;
-        /* flex-direction: row; */
-        transform-origin: 0 0;
-        transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
-      }
+    .email:not(.expand):hover {
+      background: #c2c0c2;
+      transform: translateY(-3px);
+      background-color: var(--btn-hover-color);
+    }
 
-      .to {
-        opacity: 0;
-        z-index: 999;
-        position: absolute;
-        transition: opacity 100ms cubic-bezier(0.4, 0, 1, 1);
-      }
+    .from {
+      position: absolute;
+      transition: opacity 200ms 100ms cubic-bezier(0, 0, 0.2, 1);
+    }
 
-      .to-contents {
-        transform: scale(0.55);
-        transform-origin: 0 0;
-        z-index: 999;
-        transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
-      }
+    .from-contents {
+      display: flex;
+      /* flex-direction: row; */
+      transform-origin: 0 0;
+      transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      .avatar {
-        border-radius: 12px;
-        height: 24px;
-        left: 6px;
-        position: relative;
-        top: 4px;
-        width: 24px;
-      }
+    .to {
+      opacity: 0;
+      z-index: 999;
+      position: absolute;
+      transition: opacity 100ms cubic-bezier(0.4, 0, 1, 1);
+    }
 
-      .name {
-        font-size: 16px;
-        color: #fff;
-        line-height: 48px;
-        margin-left: 35px;
-        align-items: center;
-        justify-content: center;
-      }
+    .to-contents {
+      transform: scale(0.55);
+      transform-origin: 0 0;
+      z-index: 999;
+      transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      .top {
-        background: var(--primary-color);
-        display: flex;
-        flex-direction: row;
-        height: 70px;
-        transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
-        width: 300px;
-      }
+    .avatar {
+      border-radius: 12px;
+      height: 24px;
+      left: 6px;
+      position: relative;
+      top: 4px;
+      width: 24px;
+    }
 
-      .avatar-large {
-        border-radius: 21px;
-        height: 42px;
-        margin-left: 12px;
-        position: relative;
-        top: 14px;
-        width: 42px;
-      }
+    .name {
+      font-size: 16px;
+      color: #fff;
+      line-height: 48px;
+      margin-left: 35px;
+      align-items: center;
+      justify-content: center;
+    }
 
-      .name-large {
-        color: #fff;
-        font-size: 16px;
-        line-height: 70px;
-        margin-left: 20px;
-      }
+    .top {
+      background: var(--primary-color);
+      display: flex;
+      flex-direction: row;
+      height: 70px;
+      transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      width: 300px;
+    }
 
-      .x-touch {
-        align-items: center;
-        align-self: center;
-        cursor: pointer;
-        display: flex;
-        height: 50px;
-        justify-content: center;
-        margin-left: auto;
-        width: 50px;
-      }
+    .avatar-large {
+      border-radius: 21px;
+      height: 42px;
+      margin-left: 12px;
+      position: relative;
+      top: 14px;
+      width: 42px;
+    }
 
-      .x {
-        background: #fff;
-        border-radius: 10px;
-        height: 20px;
-        position: relative;
-        width: 20px;
-      }
+    .name-large {
+      color: #fff;
+      font-size: 16px;
+      line-height: 70px;
+      margin-left: 20px;
+    }
 
-      .x-touch:hover .x {
-        background: #efd8ef;
-      }
+    .x-touch {
+      align-items: center;
+      align-self: center;
+      cursor: pointer;
+      display: flex;
+      height: 50px;
+      justify-content: center;
+      margin-left: auto;
+      width: 50px;
+    }
 
-      .line1 {
-        background: red;
-        height: 12px;
-        position: absolute;
-        transform: translateX(9px) translateY(4px) rotate(45deg);
-        width: 2px;
-      }
+    .x {
+      background: #fff;
+      border-radius: 10px;
+      height: 20px;
+      position: relative;
+      width: 20px;
+    }
 
-      .line2 {
-        background: red;
-        height: 12px;
-        position: absolute;
-        transform: translateX(9px) translateY(4px) rotate(-45deg);
-        width: 2px;
-      }
+    .x-touch:hover .x {
+      background: #efd8ef;
+    }
 
-      .bottom {
-        background: #fff;
-        color: #444247;
-        font-size: 14px;
-        height: 230px;
-        padding-top: 5px;
-        width: 300px;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
+    .line1 {
+      background: red;
+      height: 12px;
+      position: absolute;
+      transform: translateX(9px) translateY(4px) rotate(45deg);
+      width: 2px;
+    }
 
-      .row {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        height: 60px;
-      }
+    .line2 {
+      background: red;
+      height: 12px;
+      position: absolute;
+      transform: translateX(9px) translateY(4px) rotate(-45deg);
+      width: 2px;
+    }
 
-      .twitter {
-        margin-left: 16px;
-        height: 45px;
-        position: relative;
-        top: 0px;
-        width: 45px;
-      }
+    .bottom {
+      background: #fff;
+      color: #444247;
+      font-size: 14px;
+      height: 230px;
+      padding-top: 5px;
+      width: 300px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
 
-      .medium {
-        height: 30px;
-        margin-left: 16px;
-        position: relative;
-        width: 30px;
-      }
+    .row {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      height: 60px;
+    }
 
-      .link {
-        margin-left: 16px;
-      }
+    .twitter {
+      margin-left: 16px;
+      height: 45px;
+      position: relative;
+      top: 0px;
+      width: 45px;
+    }
 
-      .link a {
-        color: #444247;
-        text-decoration: none;
-      }
+    .medium {
+      height: 30px;
+      margin-left: 16px;
+      position: relative;
+      width: 30px;
+    }
 
-      .link a:hover {
-        color: #777579;
-      }
+    .link {
+      margin-left: 16px;
+    }
 
-      .email.expand {
-        border-radius: 6px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1),
-          0 6px 6px rgba(0, 0, 0, 0.16);
-        height: 300px;
-        width: 300px;
-      }
+    .link a {
+      color: #444247;
+      text-decoration: none;
+    }
 
-      .expand .from {
-        opacity: 0;
-        transition: opacity 100ms cubic-bezier(0.4, 0, 1, 1);
-      }
+    .link a:hover {
+      color: #777579;
+    }
 
-      .expand .from-contents {
-        transform: scale(1.91);
-      }
+    .email.expand {
+      border-radius: 6px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1),
+        0 6px 6px rgba(0, 0, 0, 0.16);
+      height: 300px;
+      width: 300px;
+    }
 
-      .expand .to {
-        opacity: 1;
-        transition: opacity 200ms 100ms cubic-bezier(0, 0, 0.2, 1);
-      }
+    .expand .from {
+      opacity: 0;
+      transition: opacity 100ms cubic-bezier(0.4, 0, 1, 1);
+    }
 
-      .expand .to-contents {
-        transform: scale(1);
-      }
-    </style>
-  </head>
+    .expand .from-contents {
+      transform: scale(1.91);
+    }
 
-  <body>
-    <!-- ==== HEADER ==== -->
-    <header class="container header">
-      <!-- ==== NAVBAR ==== -->
-      <nav class="nav">
-        <div class="logo">
-          <h2>Mobile Demo.</h2>
-        </div>
+    .expand .to {
+      opacity: 1;
+      transition: opacity 200ms 100ms cubic-bezier(0, 0, 0.2, 1);
+    }
 
-        <div class="nav_menu" id="nav_menu">
-          <button class="close_btn" id="close_btn">
-            <!-- <i class="ri-close-fill"></i> -->
-          </button>
+    .expand .to-contents {
+      transform: scale(1);
+    }
+  </style>
+</head>
 
-          <!-- <ul class="nav_menu_list">
+<body>
+  <!-- ==== HEADER ==== -->
+  <header class="container header">
+    <!-- ==== NAVBAR ==== -->
+    <nav class="nav">
+      <div class="logo">
+        <h2>Mobile Demo.</h2>
+      </div>
+
+      <div class="nav_menu" id="nav_menu">
+        <button class="close_btn" id="close_btn">
+          <!-- <i class="ri-close-fill"></i> -->
+        </button>
+
+        <!-- <ul class="nav_menu_list">
             <li class="nav_menu_item">
               <a href="#" class="nav_menu_link">account</a>
             </li>
@@ -256,210 +264,176 @@
               <a href="#" class="nav_menu_link">contact</a>
             </li>
           </ul> -->
-        </div>
+      </div>
 
-        <button class="toggle_btn" id="toggle_btn">
-          <!-- <i class="ri-menu-line"></i> -->
-        </button>
-      </nav>
-    </header>
+      <button class="toggle_btn" id="toggle_btn">
+        <!-- <i class="ri-menu-line"></i> -->
+      </button>
+    </nav>
+  </header>
 
-    <section class="wrapper">
-      <div class="container">
-        <div class="grid-cols-2">
-          <div class="grid-item-1">
-            <h1 class="main-heading">
-              Welcome to <span>Mobile Demo.</span>
-              <br />
-              Develop anything.
-            </h1>
-            <p class="info-text">
-              Build a beautiful, modern mobile with flexible widgets from
-              flutter.
-            </p>
+  <section class="wrapper">
+    <div class="container">
+      <div class="grid-cols-2">
+        <div class="grid-item-1">
+          <h1 class="main-heading">
+            Welcome to <span>Mobile Demo.</span>
+            <br />
+            Develop anything.
+          </h1>
+          <p class="info-text">
+            Build a beautiful, modern mobile with flexible widgets from
+            flutter.
+          </p>
 
-            <p class="info-text">
-              Click Download to file demo or
-              <a href="./manager/"
-                ><span
-                  style="
+          <p class="info-text">
+            Click Download to file demo or
+            <a href="./manager/"><span style="
                     text-decoration: underline;
                     color: var(--primary-color);
-                  "
-                  >File Manager</span
-                ></a
-              >.
-            </p>
-            <!-- ./build/DemoMobile.apk -->
-            <div class="btn_wrapper">
-              <div class="email" onclick="this.classList.add('expand')">
-                <div class="from">
-                  <div class="from-contents">
-                    <div class="name">DOWNLOAD</div>
-                  </div>
-                </div>
-                <div class="to">
-                  <div class="to-contents">
-                    <div class="top">
-                      <div class="name-large">List Demo Apks</div>
-                      <div
-                        class="x-touch"
-                        onclick="document.querySelector('.email').classList.remove('expand');event.stopPropagation();"
-                      >
-                        <div class="x">
-                          <div class="line1"></div>
-                          <div class="line2"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="bottom" id="data-list"></div>
-                  </div>
+                  ">File Manager</span></a>.
+          </p>
+          <!-- ./build/DemoMobile.apk -->
+          <div class="btn_wrapper">
+            <div class="email" onclick="this.classList.add('expand')">
+              <div class="from">
+                <div class="from-contents">
+                  <div class="name">DOWNLOAD</div>
                 </div>
               </div>
+              <div class="to">
+                <div class="to-contents">
+                  <div class="top">
+                    <div class="name-large">List Demo Apks</div>
+                    <div class="x-touch"
+                      onclick="document.querySelector('.email').classList.remove('expand');event.stopPropagation();">
+                      <div class="x">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bottom" id="data-list"></div>
+                </div>
+              </div>
+            </div>
 
-              <!-- <a href="" class="btn button view_more_btn" download>
+            <!-- <a href="" class="btn button view_more_btn" download>
                 download <i class="ri-arrow-right-line"></i>
               </a> -->
-            </div>
           </div>
+        </div>
 
-          <div class="grid-item-2">
-            <div class="team_img_wrapper">
-              <img src="./img/team.svg" alt="team-img" />
-            </div>
+        <div class="grid-item-2">
+          <div class="team_img_wrapper">
+            <img src="./img/team.svg" alt="team-img" />
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="wrapper">
-      <div class="container" data-aos="fade-up" data-aos-duration="1000">
-        <div class="grid-cols-3">
-          <div class="grid-col-item">
-            <div class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-            <div class="featured_info">
-              <span class="title">Built for developers </span>
-              <p>
-                This platform streamlines the development process with its
-                user-friendly interface and powerful tools. It simplifies
-                complex tasks, boosts productivity, and offers comprehensive
-                documentation and community support, catering to both seasoned
-                professionals and newcomers.
-              </p>
-            </div>
+  <section class="wrapper">
+    <div class="container" data-aos="fade-up" data-aos-duration="1000">
+      <div class="grid-cols-3">
+        <div class="grid-col-item">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
           </div>
-          <div class="grid-col-item">
-            <div class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-            <div class="featured_info">
-              <span class="title">Designed to be modern</span>
-              <p>
-                platform integrates cutting-edge technology with sleek,
-                user-friendly interfaces. It caters to contemporary needs,
-                ensuring efficiency, scalability, and a seamless user
-                experience. Ideal for both developers and end-users, it combines
-                functionality with style, setting a new standard in the industry
-              </p>
-            </div>
+          <div class="featured_info">
+            <span class="title">Built for developers </span>
+            <p>
+              This platform streamlines the development process with its
+              user-friendly interface and powerful tools. It simplifies
+              complex tasks, boosts productivity, and offers comprehensive
+              documentation and community support, catering to both seasoned
+              professionals and newcomers.
+            </p>
           </div>
+        </div>
+        <div class="grid-col-item">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="featured_info">
+            <span class="title">Designed to be modern</span>
+            <p>
+              platform integrates cutting-edge technology with sleek,
+              user-friendly interfaces. It caters to contemporary needs,
+              ensuring efficiency, scalability, and a seamless user
+              experience. Ideal for both developers and end-users, it combines
+              functionality with style, setting a new standard in the industry
+            </p>
+          </div>
+        </div>
 
-          <div class="grid-col-item">
-            <div class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                />
-              </svg>
-            </div>
-            <div class="featured_info">
-              <span class="title">Flutter developer</span>
-              <p>
-                A Flutter developer specializes in creating high-performance,
-                cross-platform apps using the Flutter framework and Dart
-                language. They excel in building responsive UIs, managing app
-                states, and ensuring seamless user experiences across mobile,
-                web, and desktop platforms.
-              </p>
-            </div>
+        <div class="grid-col-item">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <div class="featured_info">
+            <span class="title">Flutter developer</span>
+            <p>
+              A Flutter developer specializes in creating high-performance,
+              cross-platform apps using the Flutter framework and Dart
+              language. They excel in building responsive UIs, managing app
+              states, and ensuring seamless user experiences across mobile,
+              web, and desktop platforms.
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer></footer>
+  <footer></footer>
 
-    <!-- ==== ANIMATE ON SCROLL JS CDN -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- ==== GSAP CDN ==== -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-    <!-- ==== SCRIPT.JS ==== -->
-    <script src="./script.js" defer></script>
-    <script>
-      // Fungsi untuk mengambil data dari file JSON
-      async function fetchData() {
-        try {
-          const response = await fetch("./build/build.json");
-          const data = await response.json();
-          displayData(data.data[0].child);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
+  <!-- ==== ANIMATE ON SCROLL JS CDN -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- ==== GSAP CDN ==== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+  <!-- ==== SCRIPT.JS ==== -->
+  <script src="./script.js" defer></script>
+  <script>
+    // Fungsi untuk mengambil data dari file JSON
+    async function fetchData() {
+      try {
+        const response = await fetch("./build/build.json");
+        const data = await response.json();
+        displayData(data.data[0].child);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
+    }
 
-      // Fungsi untuk menampilkan data dalam bentuk list
-      function displayData(data) {
-        const dataList = document.getElementById("data-list");
-        data.forEach((item) => {
-          const row = document.createElement("div");
-          row.className = "row";
+    // Fungsi untuk menampilkan data dalam bentuk list
+    function displayData(data) {
+      const dataList = document.getElementById("data-list");
+      data.forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "row";
 
-          const svg = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "svg"
-          );
-          svg.setAttribute("class", "twitter");
-          svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-          svg.setAttribute("x", "0px");
-          svg.setAttribute("y", "0px");
-          svg.setAttribute("width", "100");
-          svg.setAttribute("height", "100");
-          svg.setAttribute("viewBox", "0 0 48 48");
-          svg.innerHTML = `
+        const svg = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        svg.setAttribute("class", "twitter");
+        svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        svg.setAttribute("x", "0px");
+        svg.setAttribute("y", "0px");
+        svg.setAttribute("width", "100");
+        svg.setAttribute("height", "100");
+        svg.setAttribute("viewBox", "0 0 48 48");
+        svg.innerHTML = `
                     <path fill="#c22c7b" d="M21.93,6.12l-5.21,9.3L10.7,26.19l-0.33,0.58l-0.49,0.88l-2.19,3.91c-0.99-2.12-1.58-4.47-1.65-6.94 c-0.02-0.25-0.02-0.51-0.02-0.76c0-0.23,0.01-0.47,0.02-0.7c0.2-4.18,1.81-7.97,4.34-10.9C13.27,8.91,17.35,6.65,21.93,6.12z"></path>
                     <path fill="#c22c7b" d="M31.48,10.11l-5.54,9.9l-6.03,10.77l-0.33,0.58l-4.52,8.09l-0.07,0.12l-1.1,1.95 c-2.84-1.66-5.18-4.06-6.75-6.94l4.12-7.36l0.33-0.58l6.03-10.77l4.39-7.84l0.03-0.06c0.01,0,0.01,0,0.02,0 c0.56-0.02,1.14-0.03,1.71,0C26.57,8.1,29.18,8.86,31.48,10.11z"></path>
                     <path fill="#c22c7b" d="M40.06,15.84l-1.5,2.68l-3.4,6.09l-6.03,10.76l-0.32,0.59l-3.35,5.98h-0.01 c-0.75,0.06-1.5,0.08-2.27,0.04c-2.62-0.12-5.1-0.81-7.3-1.93h-0.01l0.06-0.11l4.55-8.13l0.33-0.58l6.02-10.77l6.61-11.8 C36.26,10.4,38.57,12.89,40.06,15.84z"></path>
@@ -475,22 +449,23 @@
                     <path fill="#762a88" d="M20.81,31.23l-0.33,0.58l-4.55,8.13l-0.87-0.49l4.52-8.09l0.33-0.58l-8.32-4.14l-0.33,0.58 l-4.12,7.36c1.57,2.88,3.91,5.28,6.75,6.94L11,46.69l0.87,0.49l4.01-7.13c2.2,1.12,4.68,1.81,7.3,1.93 c0.77,0.04,1.52,0.02,2.27-0.04h0.01l3.35-5.98l0.32-0.59L20.81,31.23z M35.17,39.13c-2.58,2.4-5.88,4.05-9.51,4.61 c-0.03,0.01-0.05,0.01-0.08,0.01l1.09-1.95l3.03-5.4l0.32-0.58l5.67,2.82L35.17,39.13z"></path>
                 `;
 
-          const linkDiv = document.createElement("div");
-          linkDiv.className = "link";
-          const link = document.createElement("a");
-          link.href = item.url;
-          link.setAttribute("download", "");
-          link.textContent = `${item.label}`;
-          linkDiv.appendChild(link);
+        const linkDiv = document.createElement("div");
+        linkDiv.className = "link";
+        const link = document.createElement("a");
+        link.href = item.url;
+        link.setAttribute("download", "");
+        link.textContent = `${item.label}`;
+        linkDiv.appendChild(link);
 
-          row.appendChild(svg);
-          row.appendChild(linkDiv);
-          dataList.appendChild(row);
-        });
-      }
+        row.appendChild(svg);
+        row.appendChild(linkDiv);
+        dataList.appendChild(row);
+      });
+    }
 
-      // Panggil fungsi fetchData saat halaman dimuat
-      window.onload = fetchData;
-    </script>
-  </body>
+    // Panggil fungsi fetchData saat halaman dimuat
+    window.onload = fetchData;
+  </script>
+</body>
+
 </html>
