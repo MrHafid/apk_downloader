@@ -264,7 +264,7 @@ function openModel(modelFor) { //'newFile'
     if (modelFor == 'download') {
         if (selected_item.item?.name && !selected_item.item['isDirectory']) {
             let url = selected_item.item['name'];
-            window.open("../build/" + url);
+            window.open("../build/" + url, '_blank');
             // console.log(selected_item);
         } else {
             document.querySelector('.popup').style.display = 'flex'

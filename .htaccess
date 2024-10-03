@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Rewrite rule untuk folder /apks/
+    RewriteCond %{REQUEST_URI} ^/apks/ [NC]
+    RewriteRule ^ - [L]
+
+    # Rewrite rule untuk folder /apks/manager
+    RewriteCond %{REQUEST_URI} ^/apks/manager [NC]
+    RewriteRule ^ - [L]
+</IfModule>
+
+# Set MIME type untuk file .apk di seluruh direktori
+<IfModule mod_mime.c>
+    AddType application/vnd.android.package-archive .apk
+</IfModule>
